@@ -1,0 +1,182 @@
+.auth{
+    width: 100%;
+    padding: 1em;
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+
+    .rigth{
+        padding: 1em;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        h3{
+            font-family: "Roboto";
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 2em;
+            color: orange;
+        }
+        p{
+            font-family: "Montserrat";
+            font-weight: 400;
+            font-size: 1.2em;
+        }
+
+        figure{
+            padding: 2em;
+            img{
+                 width: 20vw;
+            height: 30vh;
+            }
+           
+        }
+    }
+
+    .form{
+       border-radius: 0.2em;
+        background-color: #fff;
+        box-shadow: -5px -5px 5px #d6d6d6;
+        padding: 1em;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+
+        h1{
+            font-family: "Roboto";
+            font-weight: 400;
+        }
+.row{
+    display: flex;
+    gap: 1em;
+    .barreVertical{
+        height: 35vh;
+        width: 1px;
+        background: #d6d6d6;
+    }
+    .leftContainer,
+    .rigthContainer{
+        width: 100%;
+        .colomn{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+            
+            label{
+                font-family: "Roboto";
+                font-size: 1em;
+                font-weight: 400;
+                margin-top: 1em;
+            }
+            input{
+                outline: none;
+                border: 1px solid #f0f1f5;
+                padding: 0.9em;
+                font-family: "Roboto";
+                background-color: #f0f1f5;
+            }
+            span{
+                font-family: "Roboto";
+                font-weight: 400;
+                color: red;
+            }
+
+            figure{
+                padding: 2em;
+                img{
+                     width: 20vw;
+                height: 30vh;
+                }
+               
+            }
+        }
+    }
+    }
+
+        .politique{
+            padding: 1em;
+            font-family: "Roboto";
+            font-size: 1em;
+            span{
+                color: orange;
+            }
+        }
+
+        .forget{
+            width: 100%;
+            display: flex;
+            padding: 1em;
+            a{
+                align-self: flex-end;
+                font-family: "Roboto";
+                color: blue;
+            }
+        }
+
+        button{
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            font-family: "Roboto";
+            font-weight: 400;
+            font-size: 1.1em;
+            background: orange;
+            border: none;
+            padding: 0.7em;
+            color: #fff;
+        }
+
+        .ask{
+            padding: 1em;
+            p{
+                font-family: "Roboto";
+                font-size: 1em;
+                color: grey;
+            }
+
+            a{
+                margin-left: 0.5em;
+                font-family: "Roboto";
+                font-size: 1em;
+                font-weight: 600;
+                color: orange;
+                cursor: pointer;
+            }
+        }
+
+    }
+
+}
+
+@media (max-width:768px) {
+   .auth{
+    width: 100%;
+    flex-direction: column;
+    .rigth{
+        figure{
+        img{
+            display: none;
+        }
+    }
+    }
+
+    .row{
+        flex-direction: column;
+        .barreVertical{
+            display: none;
+        }
+        .rigthContainer{
+            .colomn{
+                figure{
+                    display: none;
+                }
+            }
+        }
+    }
+   }
+}

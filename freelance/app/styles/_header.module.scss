@@ -1,0 +1,137 @@
+.navbar {
+  width: 100%;
+  display: flex;
+  gap: 2em;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+  background-color: white;
+  position: relative; // Ajouté pour contenir le menu absolu
+
+  .BtnMenu {
+    display: none;
+    cursor: pointer;
+  }
+
+  .logo {
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    color: Blue;
+    font-size: large;
+  }
+
+  .liens {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    .left ul {
+      display: flex;
+      gap: 1em;
+      font-family: "Montserrat", sans-serif;
+
+      .row {
+        display: flex;
+        align-items: center;
+        gap: 0.5em;
+
+        span {
+          font-size: 1.4em;
+        }
+
+        p {
+          font-size: 0.8em;
+        }
+      }
+    }
+
+    .right ul {
+      display: flex;
+      gap: 1em;
+      font-family: "Montserrat", sans-serif;
+
+      li {
+        span {
+          font-size: 1.4em;
+        }
+
+        p {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: row; // Garder la disposition en ligne pour le logo et le bouton
+    align-items: center;
+
+    .BtnMenu {
+      display: flex; // Afficher le bouton du menu
+    }
+
+    .liens {
+      display: none; // Masquer le menu par défaut
+      position: absolute; // Position absolue pour le menu
+      top: 100%; // Positionner en dessous de la navbar
+      right: 0; // Commencer à gauche
+      height: 100vh;
+      width: 90%; // Prendre toute la largeur
+      background-color: rgba(8, 8, 8, 0.925); // Fond sombre pour le menu
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); // Ombre pour le menu
+      z-index: 1000; // S'assurer que le menu est au-dessus des autres éléments
+      flex-direction: column; // Disposition en colonne pour les liens
+      gap: 0; // Pas d'espace entre les éléments
+      justify-content: center;
+
+      &.open {
+        display: flex; // Afficher le menu lorsque la classe open est appliquée
+      }
+
+      .left,
+      .right {
+        width: 100%; // Forcer les sections à prendre toute la largeur
+      }
+
+      .left ul,
+      .right ul {
+        flex-direction: column; // Disposition en colonne pour les liens
+        gap: 0; // Pas d'espace entre les éléments
+        width: 100%; // Prendre toute la largeur
+        padding: 0; // Supprimer le padding par défaut
+        margin: 0; // Supprimer la marge par défaut
+
+        li {
+          width: 100%; // Prendre toute la largeur
+          padding: 0.75em 1em; // Espacement interne pour les liens
+          border-bottom: 1px solid #444; // Séparateur entre les liens (couleur ajustée pour le fond sombre)
+
+          a {
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+            color: #eee; // Couleur du texte pour le fond sombre
+            width: 100%; // Prendre toute la largeur
+            text-decoration: none; // Supprimer le soulignement des liens
+
+            span {
+              font-size: 1.2em; // Taille des icônes
+            }
+
+            p {
+
+              display: flex;
+
+              margin: 0; // Supprimer la marge par défaut du paragraphe
+              font-size: 0.9em; // Taille du texte
+            }
+          }
+        }
+      }
+    }
+  }
+}

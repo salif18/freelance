@@ -1,0 +1,80 @@
+.newsLetter {
+    width: 100%;
+    padding: 2em;
+    display: flex;
+    gap: 1em;
+    flex-direction: column;
+    align-items: center;
+    background: #161b2e;
+    border-bottom: 0.01em solid #636363;
+
+    h2 {
+        font-family: "Roboto";
+        font-weight: 400;
+        color: orange;
+    }
+
+    p {
+        font-family: "Montserrat";
+        font-weight: 400;
+        color: #f0f2f5;
+    }
+
+    .form {
+        display: flex;
+        align-items: center;
+
+        input {
+            border: none;
+            width: 20em;
+            padding: 1em;
+            background-color: #f0f2f5;
+            font-family: "Roboto";
+            outline: none;
+        }
+
+        .btnSend {
+            padding: 1em;
+            display: flex;
+            gap: 1em;
+            justify-content: center;
+            align-items: center;
+            font-family: "Roboto";
+            font-weight: 400;
+            cursor: pointer;
+            color: #f0f2f5;
+            background-color: orange;
+            border: none;
+            width: 10em;
+            border-top-right-radius: 2em;
+            border-bottom-right-radius: 2em;
+        }
+
+    }
+
+    .sociaux {
+        display: flex;
+        gap: 1em;
+        align-items: center;
+        padding: 1em;
+
+        span {
+            color: #f0f2f5;
+            font-size: 1.5em;
+        }
+    }
+
+}
+
+@media (max-width:768px) {
+    .form {
+        flex-direction: column;
+        gap: 0.5em;
+
+        .btnSend {
+
+            border-radius: 2em;
+
+        }
+    }
+}

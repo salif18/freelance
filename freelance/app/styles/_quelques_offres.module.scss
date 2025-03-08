@@ -1,0 +1,44 @@
+.quelquesOffres {
+    background: #f0f2f5;
+    width: 100%;
+    min-height: 20em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    padding: 1.4em;
+
+    h1 {
+        align-self: flex-start;
+        font-family: "montserrat";
+        font-weight: 400;
+        margin: 1em 10em;
+    }
+
+    .row {
+        width: 100%;
+        display: flex;
+        gap: 1em;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5em;
+    }
+
+}
+
+@media (max-width:768px) {
+    .quelquesOffres{
+        width: 100%;
+
+        h1{
+            margin: 1em;
+        }
+        .row{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+       
+    }
+}

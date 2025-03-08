@@ -1,0 +1,73 @@
+.footer {
+    background: #161b2e;
+    min-height: 15em;
+    padding: 1em;
+    width: 100%;
+    display: flex;
+    gap: 1em;
+    justify-content: space-between;
+    align-items: center;
+
+    .resauxSociaux {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5em;
+
+        p {
+            font-family: "Roboto", sans-serif;
+            color: white;
+        }
+
+        .row {
+            display: flex;
+            gap: 1em;
+
+            span {
+                color: white;
+                font-size: 1.2em;
+            }
+        }
+    }
+
+    .contacts {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+
+        span {
+            font-family: "Roboto", sans-serif;
+            color: white;
+            font-size: 1em;
+        }
+    }
+
+    .copy {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+
+        p,
+        span {
+            font-family: "Roboto", sans-serif;
+            color: white;
+
+        }
+    }
+
+}
+
+@media (max-width:768px) {
+    .footer {
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+
+        .contacts,
+        .copy {
+
+            align-items: center;
+
+        }
+    }
+}

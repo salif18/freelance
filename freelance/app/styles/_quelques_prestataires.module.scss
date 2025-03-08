@@ -1,0 +1,59 @@
+.quelquesPrestataire {
+    background: #ffff;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2em;
+    padding-bottom: 2em;
+
+    h1 {
+        align-self: flex-start;
+        font-family: "montserrat";
+        font-weight: 400;
+        margin: 1em 10em;
+    }
+
+    .row {
+        width: 100%;
+        display: flex;
+        gap: 1em;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5em;
+    }
+
+    .btnMore {
+        width: 25vw;
+        padding: 0.7em;
+        margin: 1em;
+        border: none;
+        border-radius: 2em;
+        background: #161b2e;
+        display: flex;
+        justify-content: center;
+        font-family: "Roboto";
+        font-size: 1em;
+        font-weight: 400;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+@media (max-width:768px) {
+    .quelquesPrestataire{
+        width: 100%;
+   h1{
+    margin: 1em;
+   }
+        .row{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .btnMore{
+            width: 100%;
+        }
+    }
+}
