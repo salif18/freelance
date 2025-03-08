@@ -17,6 +17,8 @@ import { CiUser } from "react-icons/ci";
 import { CiMenuFries } from "react-icons/ci";
 import { MdCloseFullscreen } from "react-icons/md";
 import StripePayementMode from '../transactions/StripePayementMode';
+import { IoWalletOutline } from "react-icons/io5";
+
 
 
 
@@ -35,6 +37,7 @@ function Header() {
         { name: "Services professionnels", href: "/employes", icon: <GrUserWorker /> },
         { name: "Travaux réalisés", href: "/realisations", icon: <RiSignpostLine /> },
         { name: "Offres d'emploi", href: "/offres", icon: <LuBriefcaseBusiness /> },
+        { name: "Portefeuille virtuel", href: "/wallet", icon: <IoWalletOutline /> },
     ];
 
     const navlinks2 = [

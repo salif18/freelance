@@ -15,7 +15,7 @@ export default function PayementPrestataire() {
 
     try {
 
-      const res = await axios.post(`${process.env.NEXT_PUBLIC_URI}/checkout-orange/transfere`, {
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_URI}/checkout-orange/transfert`, {
         phoneNumber:phoneNumber,
         amount:amount,
       });

@@ -3,50 +3,36 @@
 import { useState } from "react";
 import axios from "axios";
 
-export default function OrangeMoneyCheckout() {
-  const [amount, setAmount] = useState(0);
-  const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
+export default function Payment() {
+    const [amount, setAmount] = useState("");
+    const [message, setMessage] = useState("");
 
-  const handlePayment = async () => {
-    setLoading(true);
-    setMessage("");
+    const handlePayment = async () => {
+        try {
+            const userId = "123456"; // Remplacez par l'ID de l'utilisateur connecté
+            const response = await axios.post(`${process.env.NEXT_PUBLIC_URI}/checkout-orange/abonnement`, {
+                userId,
+                amount: parseFloat(amount),
+                description: "Paiement pour un abonnement"
+            });
 
-    try {
-      console.log(amount)
-      const res = await axios.post(`${process.env.NEXT_PUBLIC_URI}/checkout-orange/abonnement`, {
-        phoneNumber:phoneNumber,
-        amount:amount,
-      });
+            setMessage(`Paiement réussi : ${response.data.message}`);
+        } catch (error) {
+            setMessage(`Erreur lors du paiement : ${error.response?.data?.message || error.message}`);
+        }
+    };
 
-      if (res.data.success) {
-        setMessage("Paiement en attente. Vérifiez votre téléphone.");
-        console.log(error)
-      } else {
-        setMessage("Échec du paiement.");
-      }
-    } catch (error) {
-      console.error("Erreur lors du paiement :", error);
-      console.log(error)
-      setMessage("Erreur lors du paiement. Vérifiez votre connexion.");
-    }
-
-    setLoading(false);
-  };
-
-  return (
-    <div>
-      <h2>Paiement Orange Money</h2>
-      <input
-        type="number"
-        placeholder="Montant à saisir"
-        value={amount}
-        onChange={(e) => setAmount(e.target.value)}
-      />
-      <button onClick={handlePayment} disabled={loading}>
-        {loading ? "Traitement..." : "Payer"}
-      </button>
-      {message && <p>{message}</p>}
-    </div>
-  );
+    return (
+        <div>
+            <h1>Paiement marchand</h1>
+            <input
+                type="number"
+                placeholder="Montant"
+                value={amount}
+                onChange={(e) => setAmount(e.target.value)}
+            />
+            <button onClick={handlePayment}>Payer</button>
+            {message && <p>{message}</p>}
+        </div>
+    );
 }

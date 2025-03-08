@@ -1,0 +1,144 @@
+/* _wallet.module.scss */
+.main{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 1em;
+.wallet {
+    width: 30rem;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #1e293b;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.balance {
+    text-align: center;
+    margin-bottom: 2rem;
+
+    h2 {
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: #475569;
+        margin-bottom: 0.5rem;
+    }
+
+    p {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #10b981;
+        margin: 0;
+    }
+}
+
+nav {
+    margin-bottom: 2rem;
+
+    ul {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+            a {
+                display: inline-block;
+                padding: 0.75rem 1.5rem;
+                background: linear-gradient(135deg, #3b82f6, #2563eb);
+                color: white;
+                font-size: 1rem;
+                font-weight: 600;
+                border-radius: 8px;
+                text-decoration: none;
+                transition: background 0.3s ease, transform 0.2s ease;
+
+                &:hover {
+                    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+                    transform: translateY(-2px);
+                }
+
+                &:active {
+                    transform: translateY(0);
+                }
+            }
+        }
+    }
+}
+
+.transactions {
+    h2 {
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: #475569;
+        margin-bottom: 1rem;
+        font-family: "Roboto";
+    }
+
+
+/* _transactionList.module.scss */
+.transactionList {
+    .transactionItem {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        background: #f8fafc;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+        .transactionDetails {
+            flex: 1;
+
+            .transactionType {
+                font-family: "Montserrat";
+                font-size: 1rem;
+                font-weight: 600;
+                color: #1e293b;
+            }
+
+            .transactionDescription {
+                font-family: "Montserrat";
+                font-size: 0.875rem;
+                color: #64748b;
+            }
+
+            .transactionDate {
+                font-family: "Montserrat";
+                font-size: 0.75rem;
+                color: #94a3b8;
+            }
+        }
+
+        .transactionAmount {
+            font-family: "Montserrat";
+            font-size: 1.25rem;
+            font-weight: 700;
+
+            &.deposit {
+                color: #10b981;
+            }
+
+            &.withdrawal {
+                color: #ef4444;
+            }
+        }
+    }
+}
+}
+}
+}
