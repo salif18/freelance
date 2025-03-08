@@ -3,8 +3,9 @@
     display: flex;
     flex-direction: column;
     gap: 1em;
-  background-color: #fff;
-  padding: 1em;
+    background-color: #fff;
+    padding: 1em;
+
     .row {
         display: flex;
         width: 100%;
@@ -16,8 +17,8 @@
             gap: 0.5em;
 
             figure img {
-                width: 5vw;
-                height: 10vh;
+                max-width: 10rem;
+                max-height: 5rem;
             }
 
             p {
@@ -26,31 +27,42 @@
                 text-overflow: ellipsis;
             }
         }
+
         p {
             font-family: "Montserrat";
         }
     }
 
-    .column{
+    .column {
         display: flex;
         flex-direction: column;
         gap: 0.6em;
-        h2{
+
+        h2 {
             font-family: "Roboto";
             font-family: 0.5em;
         }
 
-        p{
+        p {
             font-family: "Roboto";
         }
     }
 
-   
+
 }
 
 
 @media (max-width:768px) {
-    .cardOffre{
+    .cardOffre {
         width: 100%;
+
+        .row {
+            flex-direction: column;
+
+            .profil {
+                flex-direction: column;
+
+            }
+        }
     }
 }
