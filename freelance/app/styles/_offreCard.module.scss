@@ -1,8 +1,56 @@
-.cardOffre{
+.cardOffre {
+    width: 35rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+  background-color: #fff;
+  padding: 1em;
+    .row {
+        display: flex;
+        width: 100%;
+        gap: 1em;
+        justify-content: space-between;
 
+        .profil {
+            display: flex;
+            gap: 0.5em;
+
+            figure img {
+                width: 5vw;
+                height: 10vh;
+            }
+
+            p {
+                font-family: "Roboto";
+                font-weight: 600;
+                text-overflow: ellipsis;
+            }
+        }
+        p {
+            font-family: "Montserrat";
+        }
+    }
+
+    .column{
+        display: flex;
+        flex-direction: column;
+        gap: 0.6em;
+        h2{
+            font-family: "Roboto";
+            font-family: 0.5em;
+        }
+
+        p{
+            font-family: "Roboto";
+        }
+    }
+
+   
 }
 
 
 @media (max-width:768px) {
-    
- }
+    .cardOffre{
+        width: 100%;
+    }
+}
