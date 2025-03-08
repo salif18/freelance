@@ -10,7 +10,7 @@ export default function PaypalCheckout() {
   // 🔹 Créer une commande PayPal
   const createOrder = async () => {
     try {
-      const res = await axios.post("http://localhost:3002/checkout-paypal/create-paypal-order", {
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_URI}/checkout-paypal/create-paypal-order`, {
         amount: 100,
         currency: "USD",
       });
@@ -25,7 +25,7 @@ export default function PaypalCheckout() {
   // 🔹 Capturer le paiement
   const captureOrder = async (orderID) => {
     try {
-      const res = await axios.post(`http://localhost:3002/checkout-paypal/capture-paypal-order/${orderID}`);
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_URI}/checkout-paypal/capture-paypal-order/${orderID}`);
       console.log("Paiement réussi :", res.data);
     } catch (error) {
       console.log("Erreur de capture PayPal", error);

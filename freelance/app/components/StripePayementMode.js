@@ -12,7 +12,7 @@ function StripePayementMode() {
   useEffect(()=>{
       const makeRequest =async()=>{
         try{
-          const res = await axios.post('http://localhost:3002/checkout-stripe/abonnement',{
+          const res = await axios.post(`${process.env.NEXT_PUBLIC_URI}/checkout-stripe/abonnement`,{
             tokenId:stripeToken.id,
             amount:total*100
           })

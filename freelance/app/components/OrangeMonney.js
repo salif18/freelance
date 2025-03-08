@@ -17,7 +17,7 @@ export default function OrangeMoneyCheckout() {
 
       console.log(phoneNumber)
       console.log(amount)
-      const res = await axios.post("http://localhost:3002/checkout-orange/abonnement", {
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_URI}/checkout-orange/abonnement`, {
         phoneNumber:phoneNumber,
         amount:amount,
       });

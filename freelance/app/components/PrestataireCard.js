@@ -18,7 +18,7 @@ const PrestataireCard = ({item}) => {
             </section>
             {/* <StripePayementMode/> */}
             {/* <PaypalCheckout/> */}
-            <OrangeMoneyCheckout/>
+            {/* <OrangeMoneyCheckout/> */}
         </section>
     )
 } 
