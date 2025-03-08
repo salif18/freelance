@@ -16,7 +16,7 @@ import { IoIosNotificationsOutline } from "react-icons/io";
 import { CiUser } from "react-icons/ci";
 import { CiMenuFries } from "react-icons/ci";
 import { MdCloseFullscreen } from "react-icons/md";
-import StripePayementMode from '../components/StripePayementMode';
+import StripePayementMode from '../transactions/StripePayementMode';
 
 
 

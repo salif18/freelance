@@ -41,11 +41,11 @@ function StripePayementMode() {
       <button style={{
         background:'orangered',
         border:"none",
-        padding:"0.4em",
+        padding:"0.5em",
         fontFamily:"Roboto",
         color:"white",
         cursor:"pointer",
-        borderRadius:"0.8em"
+        borderRadius:"1em"
         }}>{"S'abonner"}</button>
       </StripeCheckout>
     </main>

@@ -2,9 +2,9 @@
 
 import React from 'react'
 import styles from "../styles/_cardPrestataires.module.scss"
-import StripePayementMode from './StripePayementMode'
-import PaypalCheckout from './Paypal';
-import OrangeMoneyCheckout from './OrangeMonney';
+import StripePayementMode from '../transactions/StripePayementMode'
+import PaypalCheckout from '../transactions/PayPal';
+import OrangeMoneyCheckout from '../transactions/OrangeMonney';
 
 const PrestataireCard = ({item}) => {
     return (

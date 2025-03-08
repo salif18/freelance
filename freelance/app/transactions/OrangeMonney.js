@@ -4,7 +4,6 @@ import { useState } from "react";
 import axios from "axios";
 
 export default function OrangeMoneyCheckout() {
-  const [phoneNumber, setPhoneNumber] = useState("");
   const [amount, setAmount] = useState(0);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
@@ -14,8 +13,6 @@ export default function OrangeMoneyCheckout() {
     setMessage("");
 
     try {
-
-      console.log(phoneNumber)
       console.log(amount)
       const res = await axios.post(`${process.env.NEXT_PUBLIC_URI}/checkout-orange/abonnement`, {
         phoneNumber:phoneNumber,
@@ -41,14 +38,8 @@ export default function OrangeMoneyCheckout() {
     <div>
       <h2>Paiement Orange Money</h2>
       <input
-        type="text"
-        placeholder="Numéro Orange Money"
-        value={phoneNumber}
-        onChange={(e) => setPhoneNumber(e.target.value)}
-      />
-      <input
         type="number"
-        placeholder="Montant"
+        placeholder="Montant à saisir"
         value={amount}
         onChange={(e) => setAmount(e.target.value)}
       />
