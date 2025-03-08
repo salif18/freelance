@@ -38,7 +38,15 @@ function StripePayementMode() {
     token={onToken}
     stripeKey={process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY}
     >
-      <button className='btn btn-dark'>{"S'abonner"}</button>
+      <button style={{
+        background:'orangered',
+        border:"none",
+        padding:"0.4em",
+        fontFamily:"Roboto",
+        color:"white",
+        cursor:"pointer",
+        borderRadius:"0.8em"
+        }}>{"S'abonner"}</button>
       </StripeCheckout>
     </main>
   )
