@@ -6,6 +6,8 @@ import { useRouter } from "next/navigation";
 import styles from "../../../styles/_step2.module.scss";
 import { AuthContext } from "@/app/context/authProvider";
 import LayoutPage from "@/app/layouts/Layout";
+import { CiLocationArrow1 } from "react-icons/ci";
+
 
 const SecondStepForm = () => {
   const router = useRouter();
@@ -21,7 +23,7 @@ const SecondStepForm = () => {
     budgetRange: "0",
     location: {
       type: "Point",
-      coordinates: [0, 0],
+      coordinates: [0, 0], // [longitude, latitude]
     },
     address: "",
     city: "",
@@ -30,7 +32,9 @@ const SecondStepForm = () => {
 
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
+  const [geolocationError, setGeolocationError] = useState("");
 
+  // Fonction pour gérer les changements dans les champs du formulaire
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
@@ -39,6 +43,7 @@ const SecondStepForm = () => {
     }));
   };
 
+  // Fonction pour gérer les changements dans les champs de type tableau
   const handleArrayChange = (e, field) => {
     const { value } = e.target;
     setFormData((prevState) => ({
@@ -47,14 +52,44 @@ const SecondStepForm = () => {
     }));
   };
 
+  // Fonction pour activer la géolocalisation
+  const handleGeolocation = () => {
+    if (!navigator.geolocation) {
+      setGeolocationError("La géolocalisation n'est pas supportée par votre navigateur.");
+      return;
+    }
+
+    setGeolocationError(""); // Réinitialiser les erreurs
+    setLoading(true);
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const { latitude, longitude } = position.coords;
+        setFormData((prevState) => ({
+          ...prevState,
+          location: {
+            type: "Point",
+            coordinates: [longitude, latitude], // [longitude, latitude]
+          },
+        }));
+        setLoading(false);
+      },
+      (error) => {
+        setGeolocationError("Impossible de récupérer votre position. Veuillez activer la géolocalisation.");
+        setLoading(false);
+      }
+    );
+  };
+
+  // Fonction pour soumettre le formulaire
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-
+console.log(formData)
     try {
       const response = await axios.put(`${process.env.NEXT_PUBLIC_URI}/auth/user/${userId}`, formData);
 
-      if (response.status == 200) {
+      if (response.status === 200) {
         const { user } = response.data;
         login(user, token, userId);
         router.push("/registre/step2");
@@ -80,17 +115,17 @@ const SecondStepForm = () => {
           {user?.role === "freelancer" && (
             <div className={styles.roleSection}>
               <h2>Informations Freelancer</h2>
-               {/* Section pour l'image de profil */}
-          <section className={styles.colomn}>
-            <label htmlFor="profileImage">Image de profil</label>
-            <input
-              type="text"
-              id="profileImage"
-              name="profileImage"
-              onChange={handleChange}
-              placeholder="https:// url de l'image"
-            />
-          </section>
+              {/* Section pour l'image de profil */}
+              <section className={styles.colomn}>
+                <label htmlFor="profileImage">Image de profil</label>
+                <input
+                  type="text"
+                  id="profileImage"
+                  name="profileImage"
+                  onChange={handleChange}
+                  placeholder="https:// url de l'image"
+                />
+              </section>
               <section className={styles.colomn}>
                 <label htmlFor="skills">Compétences (séparées par des virgules)</label>
                 <input
@@ -137,17 +172,17 @@ const SecondStepForm = () => {
           {user?.role === "client" && (
             <div className={styles.roleSection}>
               <h2>Informations Client</h2>
-               {/* Section pour l'image de profil */}
-          <section className={styles.colomn}>
-            <label htmlFor="profileImage">Image de profil</label>
-            <input
-              type="text"
-              id="profileImage"
-              name="profileImage"
-              onChange={handleChange}
-              placeholder="https://url de l'image"
-            />
-          </section>
+              {/* Section pour l'image de profil */}
+              <section className={styles.colomn}>
+                <label htmlFor="profileImage">Image de profil</label>
+                <input
+                  type="text"
+                  id="profileImage"
+                  name="profileImage"
+                  onChange={handleChange}
+                  placeholder="https://url de l'image"
+                />
+              </section>
               <section className={styles.colomn}>
                 <label htmlFor="companyName">Nom de l'entreprise</label>
                 <input
@@ -214,14 +249,33 @@ const SecondStepForm = () => {
                 onChange={handleChange}
               />
             </section>
+            {/* Bouton pour activer la géolocalisation */}
+            {
+              user?.role == "freelance" ?
+              <p>Cette action est primordiale si vous ne voulez pas manqué les opportunités de vos alentours </p>
+              :
+              <p>Cette action est primordiale si vous voulez retrouver les prestataire près de chez vous </p>
+            }
+            <section className={styles.colomn}>
+              <button
+                type="button"
+                onClick={handleGeolocation}
+                className={styles.geolocationButton}
+                disabled={loading}
+              >
+              <CiLocationArrow1 />
+                {loading ? "Récupération de la position..." : "Utiliser ma position actuelle"}
+              </button>
+              {geolocationError && <div className={styles.error}>{geolocationError}</div>}
+            </section>
           </div>
 
           {/* Affichage des erreurs */}
           {errors.server && <div className={styles.error}>{errors.server}</div>}
 
           <button type="submit" className={styles.submitButton} disabled={loading}>
-  {loading ? "Envoi en cours..." : "Enregistrer"}
-</button>
+            {loading ? "Envoi en cours..." : "Enregistrer"}
+          </button>
         </form>
       </section>
     </LayoutPage>

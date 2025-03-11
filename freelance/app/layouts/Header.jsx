@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import React, { useContext, useState } from 'react'
-import styles from "../styles/_header.module.scss"
+import React, { useContext, useState } from 'react';
+import styles from "../styles/_header.module.scss";
 import { RiHome9Line } from "react-icons/ri";
 import { GrUserWorker } from "react-icons/gr";
 import { RiSignpostLine } from "react-icons/ri";
@@ -20,12 +20,8 @@ import StripePayementMode from '../transactions/StripePayementMode';
 import { IoWalletOutline } from "react-icons/io5";
 import { AuthContext } from '../context/authProvider';
 
-
-
-
 function Header() {
-
-  const { logout } = useContext(AuthContext)
+    const { logout, token } = useContext(AuthContext);
     const pathname = usePathname();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -43,12 +39,11 @@ function Header() {
 
     const navlinks2 = [
         { name: "Search", href: "/search", icon: <CiSearch /> },
-        // { name: "Mail", href: "/courrier", icon: <CiMail /> },
-        { name: "Message", href: "/messages", icon: <LuMessageCircle /> },
-        { name: "Notifications", href: "/notifications", icon: <IoIosNotificationsOutline /> },
-        { name: "Profil", href: "/profil", icon: <CiUser /> },
-        { name: "Se connecter", href: "/login", icon: <AiOutlineLogin /> },
-    ];
+        token ? { name: "Message", href: "/messages", icon: <LuMessageCircle /> } : null,
+        token ? { name: "Notifications", href: "/notifications", icon: <IoIosNotificationsOutline /> } : null,
+        token ? { name: "Profil", href: "/profil", icon: <CiUser /> } : null,
+        !token ? { name: "Se connecter", href: "/login", icon: <AiOutlineLogin /> } : null,
+    ].filter(Boolean); // Filtrer les éléments null ou undefined
 
     return (
         <nav className={styles.navbar}>
@@ -62,41 +57,37 @@ function Header() {
                 {/* droite */}
                 <section className={styles.left}>
                     <ul>
-                        {
-                            navlinks.map((link) => {
-                                const isActive = pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href));
-                                return (
-                                    <li key={link.name}>
-                                        <Link className={isActive ? "active-link" : "a"} href={link.href}>
-                                            <div className={styles.row}>
-                                                <span>{link.icon}</span>
-                                                <p>{link.name}</p>
-                                            </div>
-                                        </Link>
-                                    </li>
-                                );
-                            })
-                        }
+                        {navlinks.map((link) => {
+                            const isActive = pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href));
+                            return (
+                                <li key={link.name}>
+                                    <Link className={isActive ? "active-link" : "a"} href={link.href}>
+                                        <div className={styles.row}>
+                                            <span>{link.icon}</span>
+                                            <p>{link.name}</p>
+                                        </div>
+                                    </Link>
+                                </li>
+                            );
+                        })}
                     </ul>
                 </section>
                 {/* gauche */}
                 <section className={styles.right}>
                     <ul>
-                        {
-                            navlinks2.map((link) => {
-                                const isActive = pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href));
-                                return (
-                                    <li key={link.name}>
-                                        <Link className={isActive ? "active-link" : "a"} href={link.href}>
-                                            <span>{link.icon}</span>
-                                            <p>{link.name}</p>
-                                        </Link>
-                                    </li>
-                                );
-                            })
-                        }
-                        <li><StripePayementMode/></li>
-                        <li onClick={logout}>Se deconnecter</li>
+                        {navlinks2.map((link) => {
+                            const isActive = pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href));
+                            return (
+                                <li key={link.name}>
+                                    <Link className={isActive ? "active-link" : "a"} href={link.href}>
+                                        <span>{link.icon}</span>
+                                        <p>{link.name}</p>
+                                    </Link>
+                                </li>
+                            );
+                        })}
+                        {token && <li><StripePayementMode /></li>}
+                        {token && <li onClick={logout}>Se deconnecter</li>}
                     </ul>
                 </section>
             </section>
@@ -104,7 +95,7 @@ function Header() {
                 <span>{isMenuOpen ? <MdCloseFullscreen /> : <CiMenuFries />}</span>
             </section>
         </nav>
-    )
+    );
 }
 
-export default Header
+export default Header;
