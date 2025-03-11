@@ -2,6 +2,7 @@ import "./styles/globals.scss";
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 config.autoAddCss = false;
+import { AuthProvider } from './context/authProvider';
 
 export const metadata = {
   title: "Freelance",
@@ -11,9 +12,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+     <AuthProvider>
       <body>
         {children}
       </body>
+      </AuthProvider>
     </html>
   );
 }

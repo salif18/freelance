@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import styles from "../styles/_header.module.scss"
 import { RiHome9Line } from "react-icons/ri";
 import { GrUserWorker } from "react-icons/gr";
@@ -18,13 +18,14 @@ import { CiMenuFries } from "react-icons/ci";
 import { MdCloseFullscreen } from "react-icons/md";
 import StripePayementMode from '../transactions/StripePayementMode';
 import { IoWalletOutline } from "react-icons/io5";
+import { AuthContext } from '../context/authProvider';
 
 
 
 
 function Header() {
 
-
+  const { logout } = useContext(AuthContext)
     const pathname = usePathname();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -95,6 +96,7 @@ function Header() {
                             })
                         }
                         <li><StripePayementMode/></li>
+                        <li onClick={logout}>Se deconnecter</li>
                     </ul>
                 </section>
             </section>
