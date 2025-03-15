@@ -1,0 +1,54 @@
+.profil {
+    width: 100%;
+    padding: 1em;
+    h1{
+        font-family: "Roboto";
+        font-weight: 400;
+        margin: 1em;
+        font-size: 1em;
+    }
+  
+    .nav {
+      width: 100%;
+    }
+  
+    .tabList {
+      display: flex;
+      border-bottom: 1px solid #e5e7eb; // Couleur de la bordure
+      list-style: none;
+      padding: 0;
+      margin: 0;
+  
+      @media (max-width: 768px) {
+        flex-direction: column; // Afficher les onglets en colonne sur les petits écrans
+      }
+    }
+  
+    .tabItem {
+      padding: 0.5rem 1rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #6b7280; // Couleur par défaut
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: 'Roboto', sans-serif; // Utilisation de la police Roboto
+  
+      &:hover {
+        color: #374151; // Couleur au survol
+      }
+  
+      &.active {
+        color: #111824; // Couleur de l'onglet actif
+        border-bottom-color: #1c2129; // Bordure de l'onglet actif
+      }
+  
+      @media (max-width: 768px) {
+        text-align: start; // Aligner le texte à gauche sur les petits écrans
+      }
+    }
+  
+    .tabContent {
+      padding: 1rem;
+    }
+  }

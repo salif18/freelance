@@ -34,7 +34,7 @@ function Header() {
         { name: "Services professionnels", href: "/employes", icon: <GrUserWorker /> },
         { name: "Travaux réalisés", href: "/realisations", icon: <RiSignpostLine /> },
         { name: "Offres d'emploi", href: "/offres", icon: <LuBriefcaseBusiness /> },
-        { name: "Portefeuille virtuel", href: "/wallet", icon: <IoWalletOutline /> },
+        // { name: "Portefeuille virtuel", href: "/wallet", icon: <IoWalletOutline /> },
     ];
 
     const navlinks2 = [
@@ -42,7 +42,7 @@ function Header() {
         token ? { name: "Message", href: "/messages", icon: <LuMessageCircle /> } : null,
         token ? { name: "Notifications", href: "/notifications", icon: <IoIosNotificationsOutline /> } : null,
         token ? { name: "Profil", href: "/profil", icon: <CiUser /> } : null,
-        !token ? { name: "Se connecter", href: "/login", icon: <AiOutlineLogin /> } : null,
+        // !token ? { name: "Se connecter", href: "/login", icon: <AiOutlineLogin /> } : null,
     ].filter(Boolean); // Filtrer les éléments null ou undefined
 
     return (
@@ -86,8 +86,7 @@ function Header() {
                                 </li>
                             );
                         })}
-                        {token && <li><StripePayementMode /></li>}
-                        {token && <li onClick={logout}>Se deconnecter</li>}
+                        {!token && <li><Link href="/login"> Se connecter</Link></li>}
                     </ul>
                 </section>
             </section>

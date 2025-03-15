@@ -1,0 +1,103 @@
+.infosPersonnelle{
+    width: 100%;
+    display: flex;
+    gap: 1em;
+    padding: 1em;
+    justify-content: center;
+   
+
+    .left{
+        width: 100%;
+        display: flex;
+        gap: 2em;
+        padding: 1em;
+        background-color: #ffff;
+
+        figure{
+            img{
+            width: 5rem;
+            height: auto;
+            }
+        }
+
+        .infos{
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5em;
+
+            h2{
+                font-family: "Roboto";
+                font-size: 0.9em;
+            }
+            p{
+                font-family: "Roboto";
+                font-weight: 400;
+                font-size: 0.9em;
+            }
+            input{
+                width: 100%;
+                padding: 1em;
+                font-family: "Roboto";
+            }
+
+        }
+    }
+
+    .rigth{
+        width: 100%;
+        display: flex;
+        flex-direction: column; 
+        padding: 1em;
+         gap: 0.5em;
+
+            h2{
+                font-family: "Roboto";
+                font-size: 0.9em;
+            }
+            p{
+                font-family: "Roboto";
+                font-weight: 400;
+                font-size: 0.9em;
+            }
+            a{
+                font-family: "Roboto";
+                font-weight: 400;
+                font-size: 0.9em;
+            }
+
+        background-color: #ffff;
+        button{
+            width: 15rem;
+            padding: 0.8em;
+            margin: 1em 0;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "Roboto";
+            font-weight: bold;
+            color: #ffff;
+            background-color: black;
+        }
+    }
+}
+
+@media (max-width:768px) {
+    .infosPersonnelle{
+        flex-direction: column;
+     width: 100%;
+        .left{
+            width: 100%;
+            flex-direction: column;
+            .infos{
+                width: 100%;
+            }
+        }
+        .rigth{
+            button{
+                width: 100%;
+            }
+        }
+    }
+}

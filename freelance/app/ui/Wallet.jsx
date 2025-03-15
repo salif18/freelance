@@ -60,7 +60,7 @@ export default function Wallet() {
     // }
 
     return (
-        <LayoutPage>
+        
         <main className={styles.main}>
             <section className={styles.wallet}>
                 <h1>Mon Portefeuille <IoWalletOutline/></h1>
@@ -84,6 +84,5 @@ export default function Wallet() {
                 </section>
             </section>
             </main>
-        </LayoutPage>
     );
 }
